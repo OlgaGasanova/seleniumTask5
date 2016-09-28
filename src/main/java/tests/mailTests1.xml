@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestNG mailTest" guice-stage="DEVELOPMENT">
+ <listeners>
+    <listener class-name="utils.ScreenShotListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+<test name="All Tests">
+<classes>
+<class name="tests.Tests"/>
+</classes>
+ 
+
+</test>
+
+</suite>
