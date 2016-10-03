@@ -63,7 +63,7 @@ public class Tests {
 	    };
 	}   
 	
-	private WebDriver initDriver() throws IOException {
+/*	private WebDriver initDriver() throws IOException {
 		DesiredCapabilities capabilities = null; 
 		switch (browserType) {
 		case "chrome":
@@ -84,7 +84,7 @@ public class Tests {
 		}
 		RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 		return driver;
-	}
+	}*/
 	
 	@Test(groups = "beforeWork")
 	public void beforeWork() throws IOException{
