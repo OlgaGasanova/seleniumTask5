@@ -94,7 +94,7 @@ public class Tests {
 			.setSearchPasswordFieldText(person.getPassword())
 			.clickEnterButton();
 		//Assert.assertTrue(driver.findElement(By.xpath(".//i[text()='" + person.getLogin() + "']")).isDisplayed(),"assertEnter fail");
-		new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
+		//new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
 		LOG.info("'performEnter' finish");
 	}
 	
@@ -102,6 +102,7 @@ public class Tests {
 //	public void writeAndSaveLetters(String whom, String theme, String text){
 //		LOG.info("'writeAndSaveLetters' start");
 //		WriteLetterPage pageW = new WriteLetterPage(driver);
+//		new WriteLetter(driver).performWriteLetter(whom, theme, text);
 //		new WriteLetter(driver).performWriteLetter(whom, theme, text);
 //		pageW.garbageClick();
 //		GarbagePage page = new GarbagePage(driver);
