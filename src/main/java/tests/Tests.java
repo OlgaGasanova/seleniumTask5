@@ -93,7 +93,7 @@ public class Tests {
 		page.setSearchLoginFieldText(person.getLogin())
 			.setSearchPasswordFieldText(person.getPassword()).clickEnterButton();
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
