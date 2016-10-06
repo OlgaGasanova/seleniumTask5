@@ -92,93 +92,89 @@ public class Tests {
 		MailPage page = new MailPage(driver);
 		page.setSearchLoginFieldText(person.getLogin())
 			.setSearchPasswordFieldText(person.getPassword()).clickEnterButton();
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		WriteLetterPage pageW = new WriteLetterPage(driver);
-		pageW.garbageClick();
 		//Assert.assertTrue(driver.findElement(By.xpath(".//i[text()='" + person.getLogin() + "']")).isDisplayed(),"assertEnter fail");
-		//new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
-//		LOG.info("'performEnter' finish");
+		new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
+		LOG.info("'performEnter' finish");
 	}
 	
-//	@Test(groups = "writeLetters", dependsOnGroups = "performEnter", dataProvider = "getWhom")
-//	public void writeAndSaveLetters(String whom, String theme, String text){
-//		LOG.info("'writeAndSaveLetters' start");
-//		WriteLetterPage pageW = new WriteLetterPage(driver);
-//		new WriteLetter(driver).performWriteLetter(whom, theme, text);
-//		new WriteLetter(driver).performWriteLetter(whom, theme, text);
-//		pageW.garbageClick();
-//		GarbagePage page = new GarbagePage(driver);
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();	
-//		}
-//		System.out.println("pageG whomText()=" + page.whomText());
-//		System.out.println("pageG themeText()=" + page.themeText());
-//		Assert.assertTrue(page.whomText().contains(whom), WHOM_TEXT_ON_GARBAGE_PAGE_IS_INCORRECT);
-//		Assert.assertTrue(page.themeText().contains(theme), THEME_TEXT_ON_GARBAGE_PAGE_IS_INCORRECT);
-//		LOG.info("'writeAndSaveLetters' finish");
-//		//ScreenShot.make(driver);
-//	}
-//	
-//	@Test(groups = "sendLetters", dependsOnGroups = "writeLetters", dataProvider = "getWhom")
-//	public void sendLetters(String whom, String theme, String text){
-//		LOG.info("'sendLetters' start");
-//		GarbagePage pageG = new GarbagePage(driver);
-//		pageG.garbageClick();
-//		pageG.whomClick();
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();	
-//		}
-//		String whomText = pageG.whomText();
-//		String themeText = pageG.themeText();
-//		pageG.sendLetterClick();	
-//		SentLettersPage pageS = new SentLettersPage(driver);
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();	
-//		}
-//		pageS.sentLettersClick();
-//		System.out.println("pageS whomText()=" + pageS.whomText());
-//		System.out.println("pageS themeText()=" + pageS.themeText());
-//		Assert.assertTrue(pageS.whomText().contains(whomText), WHOM_TEXT_ON_SENT_LETTERS_PAGE_IS_INCORRECT);
-//		Assert.assertTrue(pageS.themeText().contains(themeText), THEME_TEXT_ON_SENT_LETTERS_PAGE_IS_INCORRECT);
-//		LOG.info("'sendLetters' finish");
-//	}
-//
-//	@Test(groups = "fail", dependsOnGroups = "sendLetters")
-//	public void failTest(){
-//		Assert.assertTrue(false);
-//	}
-//	
-//	@Test(groups = "delete", dependsOnGroups = "sendLetters")
-//	public void deleteLetters(){
-//		LOG.info("'deleteLetters' start");
-//		DeleteLetters delLet = new DeleteLetters(driver);
-//		Assert.assertTrue(delLet.deleteLettersGarbage(), INCORRECT_DELETE_FROM_GARBAGE);
-//		Assert.assertTrue(delLet.deleteLettersSent(), INCORRECT_DELETE_FROM_SENT_LETTERS);
-//		LOG.info("'deleteLetters' finish");
-//	}	
-//	
-//	@Test(groups = "exitMail", dependsOnGroups = "delete")
-//	public void exitMail(){
-//		LOG.info("'exitMail' start");
-//		MailPage page = new MailPage(driver);
-//		page.clickExitButton();
-//		Assert.assertTrue(page.searchLoginFieldIsDisplayed(), INCORRECT_EXIT);
-//		LOG.info("'exitMail' finish");
-//	}
+	@Test(groups = "writeLetters", dependsOnGroups = "performEnter", dataProvider = "getWhom")
+	public void writeAndSaveLetters(String whom, String theme, String text){
+		LOG.info("'writeAndSaveLetters' start");
+		//WriteLetterPage pageW = new WriteLetterPage(driver);
+		new WriteLetter(driver).performWriteLetter(whom, theme, text);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();	
+		}
+		GarbagePage page = new GarbagePage(driver);
+		page.garbageClick();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();	
+		}
+		System.out.println("pageG whomText()=" + page.whomText());
+		System.out.println("pageG themeText()=" + page.themeText());
+		Assert.assertTrue(page.whomText().contains(whom), WHOM_TEXT_ON_GARBAGE_PAGE_IS_INCORRECT);
+		Assert.assertTrue(page.themeText().contains(theme), THEME_TEXT_ON_GARBAGE_PAGE_IS_INCORRECT);
+		LOG.info("'writeAndSaveLetters' finish");
+		//ScreenShot.make(driver);
+	}
+	
+	@Test(groups = "sendLetters", dependsOnGroups = "writeLetters", dataProvider = "getWhom")
+	public void sendLetters(String whom, String theme, String text){
+		LOG.info("'sendLetters' start");
+		GarbagePage pageG = new GarbagePage(driver);
+		pageG.garbageClick();
+		pageG.whomClick();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();	
+		}
+		String whomText = pageG.whomText();
+		String themeText = pageG.themeText();
+		pageG.sendLetterClick();	
+		SentLettersPage pageS = new SentLettersPage(driver);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();	
+		}
+		pageS.sentLettersClick();
+		System.out.println("pageS whomText()=" + pageS.whomText());
+		System.out.println("pageS themeText()=" + pageS.themeText());
+		Assert.assertTrue(pageS.whomText().contains(whomText), WHOM_TEXT_ON_SENT_LETTERS_PAGE_IS_INCORRECT);
+		Assert.assertTrue(pageS.themeText().contains(themeText), THEME_TEXT_ON_SENT_LETTERS_PAGE_IS_INCORRECT);
+		LOG.info("'sendLetters' finish");
+	}
 
-//	@AfterClass
-//	public void closeDriver() {
-//		driver.close();
-//	}
+	@Test(groups = "fail", dependsOnGroups = "sendLetters")
+	public void failTest(){
+		Assert.assertTrue(false);
+	}
+	
+	@Test(groups = "delete", dependsOnGroups = "sendLetters")
+	public void deleteLetters(){
+		LOG.info("'deleteLetters' start");
+		DeleteLetters delLet = new DeleteLetters(driver);
+		Assert.assertTrue(delLet.deleteLettersGarbage(), INCORRECT_DELETE_FROM_GARBAGE);
+		Assert.assertTrue(delLet.deleteLettersSent(), INCORRECT_DELETE_FROM_SENT_LETTERS);
+		LOG.info("'deleteLetters' finish");
+	}	
+	
+	@Test(groups = "exitMail", dependsOnGroups = "delete")
+	public void exitMail(){
+		LOG.info("'exitMail' start");
+		MailPage page = new MailPage(driver);
+		page.clickExitButton();
+		Assert.assertTrue(page.searchLoginFieldIsDisplayed(), INCORRECT_EXIT);
+		LOG.info("'exitMail' finish");
+	}
+
+	@AfterClass
+	public void closeDriver() {
+		driver.close();
+	}
 }
