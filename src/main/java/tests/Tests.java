@@ -92,6 +92,12 @@ public class Tests {
 		MailPage page = new MailPage(driver);
 		page.setSearchLoginFieldText(person.getLogin())
 			.setSearchPasswordFieldText(person.getPassword()).clickEnterButton();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//Assert.assertTrue(driver.findElement(By.xpath(".//i[text()='" + person.getLogin() + "']")).isDisplayed(),"assertEnter fail");
 		//new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
 //		LOG.info("'performEnter' finish");
