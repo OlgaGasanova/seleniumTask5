@@ -98,6 +98,8 @@ public class Tests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		WriteLetterPage pageW = new WriteLetterPage(driver);
+		pageW.garbageClick();
 		//Assert.assertTrue(driver.findElement(By.xpath(".//i[text()='" + person.getLogin() + "']")).isDisplayed(),"assertEnter fail");
 		//new EnterInOurMail(driver).assertEnterInMail(person.getLogin());
 //		LOG.info("'performEnter' finish");
